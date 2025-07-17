@@ -3,14 +3,13 @@ import styles from "./TaskItem.module.css";
 export const TaskItem = () => {
   return (
     <div className={styles.card}>
-      <h2 className={styles.cardTittle}>ЗАГОЛОВОК</h2>
-      <p className={styles.cardDescription}>Описание</p>
+      <h2 className={styles.cardTittle}>Создать проект</h2>
+      <p className={styles.cardDescription}>Нужно сделать проект на React</p>
       <div className={styles.cardInfo}>
-        <p className={styles.category}>Категория</p>
-        <p className={styles.status}>Статус</p>
-        <p className={styles.priority}>Приоритет</p>
+        <p className={styles.category}>Баг</p>
+        <p className={styles.status}>В процессе</p>
+        <p className={styles.priority}>Важно</p>
       </div>
-     <button className = {styles.cardButton}></button>
     </div>
   )
 }

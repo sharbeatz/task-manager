@@ -1,33 +1,44 @@
 body {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    background-color: #3A2E3D;
+    background-color: #FFFFFF;
+    margin: 0;
+    padding: 0;
 }
 
 
 .card {
-    background-color: #FFA0C0;
+    background-color: #000000;
     max-width: 25%;
     padding: 10px;
-    margin-left: 50px;
-    margin-top: 150px;
     border-radius: 10px;
+    box-shadow: 5px 3px 4px 2px black;
 }
 
 .cardInfo {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    background-color: aliceblue;
+  
+    margin: 0;
 }
 
-.category .status .priority {
- 
+.cardInfo p {
+    margin: 0;
+    background-color:antiquewhite;
+}
+
+.category {
+    padding: 0;
 }
 
 
 .cardTittle {
     text-align: center;
-    color:aliceblue;
+    color: #FFFFFF;
+}
+
+.cardDescription {
+    color: #FFFFFF;
 }
 
 
