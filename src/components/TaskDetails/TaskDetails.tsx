@@ -1,7 +1,7 @@
 import styles from './TaskDetails.module.css'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { useTasks } from '../../context/TaskContext';
-
+import { colors } from '../../const';
 
 export const TaskDetails = () => {
   const { id } = useParams();
@@ -13,14 +13,20 @@ export const TaskDetails = () => {
   console.log(selectedTask);
 
     return (
-    <div className={styles.card}>
-      <h2 className={styles.cardTittle}>{selectedTask.title}</h2>
-      <p className={styles.cardDescription}>{selectedTask.description}</p>
-      <div className={styles.cardInfo}>
-        <p className={styles.category}>{selectedTask.category}</p>
-        <p className={styles.status}>{selectedTask.status}</p>
-        <p className={styles.priority}>{selectedTask.priority}</p>
+    <div>
+      <div className={styles.card}>
+        <h2 className={styles.cardTittle}>{selectedTask.title}</h2>
+        <p className={styles.cardDescription}>{selectedTask.description}</p>
+        <div className={styles.cardInfo}>
+        <p className={styles.category} style={{ background: colors.category[selectedTask.category] }}>{selectedTask.category}</p>
+        <p className={styles.status} style={{ background: colors.status[selectedTask.status] }}>{selectedTask.status}</p>
+        <p className={styles.priority} style= {{ background: colors.priority[selectedTask.priority]}} >{selectedTask.priority}</p>
+        </div>
       </div>
+
+    <Link to={'/'} className={styles.buttonBack}>Назад</Link>
     </div>
     )
 }
+
+// Что-то придумать с дублирвоанием TaskItem и TaskDetails

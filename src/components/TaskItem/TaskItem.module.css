@@ -11,10 +11,13 @@ body {
     padding: 10px;
     border-radius: 10px;
     box-shadow: 2px 2px 50px 2px black;
+
     margin: 10px;
     max-height: 150px; /* Ограничиваем высоту */
     overflow: hidden; /* Скрываем всё, что не помещается */
-
+    text-align: center;
+    display: flex;
+    flex-direction: column;
 }
 
 .cardInfo {
@@ -29,7 +32,7 @@ body {
     background-color:white;
     padding: 1.5px;
     border-radius: 5px;
-    box-shadow: 2px 1px 4px 2px red;
+    /* box-shadow: 2px 1px 4px 2px white; */
 }
 
 .category {
@@ -43,12 +46,12 @@ body {
 
 }
 
-.cardTittle h2 {
 
-}
 
 .cardDescription {
     color: #FFFFFF;
 }
 
-
+a {
+    text-decoration: none;
+}

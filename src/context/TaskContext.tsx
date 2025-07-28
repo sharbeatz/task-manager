@@ -8,24 +8,86 @@ const TaskContext = createContext<Task[] | undefined>(undefined);
 
 export const TaskProvider = ( {children}:TaskContextProps ) => {
     const [task, setTask] = useState<Task[]>([
-        {
+       {
         id: '1',
-        title: 'Задача',
-        description: 'Описание',
+        title: 'Исправить баг с авторизацией',
+        description: 'При входе с Safari возникает ошибка 403. Нужно проверить CORS политику.',
         category: 'Bug',
-        status: 'To Do',
-        priority: 'Low',
+        status: 'In Progress',
+        priority: 'High',
     },
-
     {
         id: '2',
-        title: 'Задача2',
-        description: 'Сделать React 2. Спроектировать макет',
+        title: 'Добавить страницу профиля',
+        description: 'Сверстать UI профиля пользователя с аватаром и статистикой',
         category: 'Future',
         status: 'To Do',
         priority: 'Medium',
     },
-
+    {
+        id: '3',
+        title: 'Провести рефакторинг API',
+        description: 'Оптимизировать эндпоинты /users и /posts',
+        category: 'Refactor',
+        status: 'In Progress',
+        priority: 'Medium',
+    },
+    {
+        id: '4',
+        title: 'Написать тесты для корзины',
+        description: 'Покрыть тестами компонент Cart и связанные хуки',
+        category: 'Test',
+        status: 'Done',
+        priority: 'Low',
+    },
+    {
+        id: '5',
+        title: 'Обновить документацию',
+        description: 'Дописать раздел про аутентификацию в README.md',
+        category: 'Documentation',
+        status: 'To Do',
+        priority: 'Low',
+    },
+    {
+        id: '6',
+        title: 'Миграция на TypeScript',
+        description: 'Перевести компоненты Button и Modal на TypeScript',
+        category: 'Refactor',
+        status: 'In Progress',
+        priority: 'High',
+    },
+    {
+        id: '7',
+        title: 'Интеграция с PayPal',
+        description: 'Добавить новый платежный шлюз',
+        category: 'Future',
+        status: 'To Do',
+        priority: 'High',
+    },
+    {
+        id: '8',
+        title: 'Оптимизация загрузки изображений',
+        description: 'Реализовать lazy loading для галереи товаров',
+        category: 'Future',
+        status: 'To Do',
+        priority: 'Medium',
+    },
+    {
+        id: '9',
+        title: 'Создать CI/CD пайплайн',
+        description: 'Настроить автоматический деплой на AWS',
+        category: 'Future',
+        status: 'In Progress',
+        priority: 'High',
+    },
+    {
+        id: '10',
+        title: 'Планирование спринта',
+        description: 'Провести митинг с командой по задачам на следующую неделю',
+        category: 'Documentation',
+        status: 'Done',
+        priority: 'Low',
+    }
 ]);
 
     return (

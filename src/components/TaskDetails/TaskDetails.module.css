@@ -33,7 +33,7 @@ body {
     background-color:white;
     padding: 1.5px;
     border-radius: 5px;
-    box-shadow: 2px 1px 4px 2px white;
+    /* box-shadow: 2px 1px 4px 2px white; */
 }
 
 .category {
@@ -55,4 +55,11 @@ body {
     color: #FFFFFF;
 }
 
- 
+a.buttonBack {
+    background-color: black;
+    box-shadow: 2px 1px 2px 2px black;
+    padding-left: 5px;
+    color:aliceblue;
+    border-radius: 5px;
+    text-decoration: none;
+}
