@@ -9,6 +9,7 @@ const TaskContext = createContext<Task[] | undefined>(undefined);
 export const TaskProvider = ( {children}:TaskContextProps ) => {
     const [task, setTask] = useState<Task[]>([
         {
+        id: '1',
         title: 'Задача',
         description: 'Описание',
         category: 'Bug',
@@ -17,6 +18,7 @@ export const TaskProvider = ( {children}:TaskContextProps ) => {
     },
 
     {
+        id: '2',
         title: 'Задача2',
         description: 'Сделать React 2. Спроектировать макет',
         category: 'Future',

@@ -1,7 +1,6 @@
-import { useTasks } from "../context/TaskContext";
-import type { Task } from "../types/task";
-import { TaskItem } from "./TaskItem/TaskItem";
-
+import { useTasks } from "../../context/TaskContext";
+import type { Task } from "../../types/task";
+import { TaskItem } from "../TaskItem/TaskItem";
 
 export const TaskList = () => {
     const tasks = useTasks();

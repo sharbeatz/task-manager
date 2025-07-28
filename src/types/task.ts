@@ -1,5 +1,5 @@
 export interface Task {
-    id?: string,
+    id: string,
     title: string,
     description?: string,
     category: 'Bug' | 'Future' | 'Documentation' | 'Refactor' | 'Test',

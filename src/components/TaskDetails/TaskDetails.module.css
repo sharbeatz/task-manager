@@ -14,14 +14,16 @@ body {
     height: 250px;
     display: flex;
     flex-direction: column;
-    justify-content: space-
-    between;
-}
+    justify-content: space-between;
+    }
+
+
 
 .cardInfo {
     display: flex;
     justify-content: space-between;
     width: 100%;
+
 }
 
 
@@ -31,7 +33,7 @@ body {
     background-color:white;
     padding: 1.5px;
     border-radius: 5px;
-    box-shadow: 2px 1px 4px 2px red;
+    box-shadow: 2px 1px 4px 2px white;
 }
 
 .category {
