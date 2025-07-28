@@ -4,25 +4,27 @@ body {
 
 }
 
-
 .card {
+    padding: 30px;
     background-color: #000000;
-    max-width: 25%;
-    padding: 10px;
+    max-width: 50%;
     border-radius: 10px;
     box-shadow: 2px 2px 50px 2px black;
-    margin: 10px;
-    max-height: 150px; /* Ограничиваем высоту */
-    overflow: hidden; /* Скрываем всё, что не помещается */
-
+    margin: 10px auto;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-
+    between;
 }
 
 .cardInfo {
     display: flex;
     justify-content: space-between;
     width: 100%;
-  
 }
+
+
 
 .cardInfo p {
     margin: 0;
@@ -51,4 +53,4 @@ body {
     color: #FFFFFF;
 }
 
-
+ 

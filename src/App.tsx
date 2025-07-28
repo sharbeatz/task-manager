@@ -1,14 +1,17 @@
 import { Task } from "@mui/icons-material"
-import { TaskProvider } from "./context/TaskContext"
 import { TaskItem } from "./components/TaskItem/TaskItem"
+import { TaskProvider } from "./context/TaskContext"
+import { TaskList } from "./components/TaskList"
+import { TaskDetails } from "./components/TaskDetails/TaskDetails"
 
 function App()
 {
 
   return (
-    <>
-    <TaskItem />
-    </>
+    <TaskProvider>
+     <TaskList/>
+     <TaskDetails></TaskDetails>
+    </TaskProvider>
   )
 }
 

@@ -1,14 +1,21 @@
 import styles from "./TaskItem.module.css";
+import { useTasks } from "../../context/TaskContext";
+import type { Task } from "../../types/task";
 
-export const TaskItem = () => {
+type TaskItemProps = {
+  task: Task;
+}
+
+export const TaskItem = ({task}:TaskItemProps) => {
+
   return (
     <div className={styles.card}>
-      <h2 className={styles.cardTittle}>Создать проект</h2>
-      <p className={styles.cardDescription}>Нужно сделать проект на React</p>
+      <h2 className={styles.cardTittle}>{task.title}</h2>
+      <p className={styles.cardDescription}>{task.description}</p>
       <div className={styles.cardInfo}>
-        <p className={styles.category}>Баг</p>
-        <p className={styles.status}>В процессе</p>
-        <p className={styles.priority}>Важно</p>
+        <p className={styles.category}>{task.category}</p>
+        <p className={styles.status}>{task.status}</p>
+        <p className={styles.priority}>{task.priority}</p>
       </div>
     </div>
   )
