@@ -1,7 +1,7 @@
 body {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     background-color: #FFFFFF;
-
+   
 }
 
 .card {
@@ -55,7 +55,7 @@ body {
     color: #FFFFFF;
 }
 
-a.buttonBack {
+a.backButton {
     background-color: black;
     box-shadow: 2px 1px 2px 2px black;
     padding-left: 5px;
@@ -63,3 +63,13 @@ a.buttonBack {
     border-radius: 5px;
     text-decoration: none;
 }
+
+.editButton {
+        
+    border-radius: 5px;
+}
+
+input {
+     color: black;
+}
+

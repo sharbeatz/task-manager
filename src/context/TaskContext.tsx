@@ -7,7 +7,11 @@ type TaskContextProps = {
 const TaskContext = createContext<Task[] | undefined>(undefined);
 
 export const TaskProvider = ( {children}:TaskContextProps ) => {
-    const [task, setTask] = useState<Task[]>([
+    const updateTasks = (taskId: string, task: Task) => {
+        
+    }
+
+    const [tasks, setTasks] = useState<Task[]>([
        {
         id: '1',
         title: 'Исправить баг с авторизацией',
@@ -90,8 +94,10 @@ export const TaskProvider = ( {children}:TaskContextProps ) => {
     }
 ]);
 
+
+
     return (
-        <TaskContext value = {task}>
+        <TaskContext value = {tasks}>
             {children}
         </TaskContext>
     )

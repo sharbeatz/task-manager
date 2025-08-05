@@ -55,3 +55,7 @@ body {
 a {
     text-decoration: none;
 }
+
+.editButton {
+    background-color: #000000;
+}
