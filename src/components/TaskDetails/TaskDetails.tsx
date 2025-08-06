@@ -16,7 +16,7 @@ export const TaskDetails = () => {
   const [text, setText] = useState<Task>(task);
   const [editing, setEditing] = useState<boolean>(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement> | React.ChangeEvent<HTMLSelectElement> ) => {
     const {value, name} = e.target;
     setText(prev=> ({
       ...prev,
@@ -24,10 +24,18 @@ export const TaskDetails = () => {
     }))
   }
 
+  // Кнопка сохранения изменений
   const handleSave = () => {
     updateTask(task.id, text);
     setEditing(false);
   }
+
+  const handleCancel = () => {
+    setEditing(false);
+    setText(task);
+  }
+
+  
 
   console.log(tasks.map(item => item))
 
@@ -67,25 +75,25 @@ export const TaskDetails = () => {
           <textarea className={styles.cardDescriptionEditing} value={text.description} onChange={handleChange} name='description'></textarea>
           <div className={styles.cardInfo}>
 
-          <select className={styles.categoryEditing}>
+          <select className={styles.categoryEditing} onChange={handleChange} name='category' value={text.category}>
             {cardInfo.category.map(item => (<option>{item}</option>))}
           </select>
 
-          <select className={styles.statusEditing}>
+          <select className={styles.statusEditing} onChange={handleChange} name='status' value={text.status}>
             {cardInfo.status.map(item => (<option>{item}</option>))}
 
           </select>
 
-          <select className={styles.priorityEditing}>
+          <select className={styles.priorityEditing} onChange={handleChange} name='priority' value={text.priority}>
             {cardInfo.priority.map(item => (<option>{item}</option>))}
           </select>
 
-          <button className={styles.cancelButton}>Отменить</button>
+          <button className={styles.cancelButton} onClick={handleCancel}>Отменить</button>
           <button className={styles.editButton} onClick={handleSave}>Сохранить</button>
           </div>
         </div>
       <Link to={'/'} className={styles.backButton}>Назад</Link>
-      <p>{text.title}</p>
+
       </>
   )
 }
