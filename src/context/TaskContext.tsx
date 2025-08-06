@@ -4,12 +4,15 @@ import { createContext, useContext, type ReactNode, useState} from "react";
 type TaskContextProps = {
     children: ReactNode;
 }
-const TaskContext = createContext<Task[] | undefined>(undefined);
+
+type TaskContextValue = {
+    tasks: Task[];
+    updateTask: (taskId: string, updateTask: Task) => void;
+}
+
+const TaskContext = createContext<TaskContextValue | undefined>(undefined);
 
 export const TaskProvider = ( {children}:TaskContextProps ) => {
-    const updateTasks = (taskId: string, task: Task) => {
-        
-    }
 
     const [tasks, setTasks] = useState<Task[]>([
        {
@@ -93,11 +96,13 @@ export const TaskProvider = ( {children}:TaskContextProps ) => {
         priority: 'Low',
     }
 ]);
-
+    const updateTask = (taskId: string, updatedTask: Task) => {
+        setTasks(prev => prev.map(task => task.id === taskId ? updatedTask : task))
+    }
 
 
     return (
-        <TaskContext value = {tasks}>
+        <TaskContext value = {{tasks, updateTask}}>
             {children}
         </TaskContext>
     )

@@ -3,7 +3,7 @@ import type { Task } from "../../types/task";
 import { TaskItem } from "../TaskItem/TaskItem";
 
 export const TaskList = () => {
-    const tasks = useTasks();
+    const { tasks } = useTasks();
     console.log(tasks);
     return ( 
         <div>

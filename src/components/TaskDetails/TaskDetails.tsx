@@ -4,11 +4,13 @@ import { useTasks } from '../../context/TaskContext';
 import { colors } from '../../const';
 import { useState } from 'react';
 import type { Task } from '../../types/task';
+import { cardInfo } from '../../const';
 
 export const TaskDetails = () => {
   const { id } = useParams();
 
-  const tasks = useTasks();
+  const {tasks, updateTask} = useTasks();
+
   const task = tasks.find(task => task.id === id)!; // ! - значит сто проц что есть этот id.
   console.log(task);
   const [text, setText] = useState<Task>(task);
@@ -22,6 +24,18 @@ export const TaskDetails = () => {
     }))
   }
 
+  const handleSave = () => {
+    updateTask(task.id, text);
+    setEditing(false);
+  }
+
+  console.log(tasks.map(item => item))
+
+  const color = {
+    category: { backgroundColor: colors.category[task.category] },
+    status: { backgroundColor: colors.status[task.status] },
+    priority: { backgroundColor: colors.priority[task.priority] }
+  }
    // Форма Просмотра
   if (!editing) {
       return (
@@ -34,9 +48,9 @@ export const TaskDetails = () => {
             {task.description}
             </p>
           <div className={styles.cardInfo}>
-            <p className={styles.category} style={{ background: colors.category[task.category] }}>{task.category}</p>
-            <p className={styles.status} style={{ background: colors.status[task.status] }}>{task.status}</p>
-            <p className={styles.priority} style= {{ background: colors.priority[task.priority]}} >{task.priority}</p>
+            <p className={styles.category} style={color.category}>{task.category}</p>
+            <p className={styles.status} style={color.status}>{task.status}</p>
+            <p className={styles.priority} style={color.priority}>{task.priority}</p>
             <button className={styles.editButton} onClick={() => setEditing(true)}>Редактировать</button>
           </div>
         </div>
@@ -53,23 +67,21 @@ export const TaskDetails = () => {
           <textarea className={styles.cardDescriptionEditing} value={text.description} onChange={handleChange} name='description'></textarea>
           <div className={styles.cardInfo}>
 
-          <select className={styles.categoryEditing} style={{ background: colors.category[task.category] }}>
+          <select className={styles.categoryEditing}>
+            {cardInfo.category.map(item => (<option>{item}</option>))}
+          </select>
+
+          <select className={styles.statusEditing}>
+            {cardInfo.status.map(item => (<option>{item}</option>))}
 
           </select>
 
-          <select className={styles.statusEditing} style={{ background: colors.status[task.status] }}>
-            <option style={{ background: colors.status.Done }}>Одна фигня</option>
-             <option className={styles.vibor} style={{backgroundColor: 'blue'}}>Вторая фигня</option>
-             <option>Третья фигня</option>
-          </select>
-
-          <select className={styles.priorityEditing} style= {{ background: colors.priority[task.priority]}}>
-            <option>Одна фигня</option>
-             <option>Вторая фигня</option>
+          <select className={styles.priorityEditing}>
+            {cardInfo.priority.map(item => (<option>{item}</option>))}
           </select>
 
           <button className={styles.cancelButton}>Отменить</button>
-          <button className={styles.editButton}>Сохранить</button>
+          <button className={styles.editButton} onClick={handleSave}>Сохранить</button>
           </div>
         </div>
       <Link to={'/'} className={styles.backButton}>Назад</Link>
