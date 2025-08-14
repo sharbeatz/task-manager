@@ -1,8 +1,8 @@
-import { Task } from "@mui/icons-material";
-import { TaskItem } from "./components/TaskItem/TaskItem";
-import { TaskProvider } from "./context/TaskContext";
-import { TaskList } from "./components/TaskList/TaskList";
-import { TaskDetails } from "./components/TaskDetails/TaskDetails";
+import { TaskDetails } from "@/pages";
+
+import { TaskProvider } from "@/features/Tasks/model/TaskContext";
+import { TaskList } from "@/features";
+
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 export function App() {

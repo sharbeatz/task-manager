@@ -1,4 +1,4 @@
-import type { Task } from "../types/task";
+import type { Task } from "../../../types/task";
 import { createContext, useContext, type ReactNode, useState } from "react";
 
 type TaskContextProps = {
