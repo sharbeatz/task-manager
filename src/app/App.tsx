@@ -1,7 +1,7 @@
 import { TaskDetails } from "@/pages";
 
-import { TaskProvider } from "@/features/Tasks/model/TaskContext";
-import { TaskList } from "@/features";
+import { TaskProvider } from "@/features/TaskList/model/TaskContext";
+import { TaskList } from "@/features/TaskList";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
