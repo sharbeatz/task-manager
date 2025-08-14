@@ -1,5 +1,5 @@
 import styles from "./TaskItem.module.css";
-import { useTasks } from "../../features/TaskList/model/TaskContext";
+// import { useTasks } from "../../features/TaskList/model/TaskContext";
 import type { Task } from "../../shared/types/task";
 import { Link } from "react-router-dom";
 import { colors } from "../../const";

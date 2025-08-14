@@ -1,16 +1,34 @@
-import styles from "./TaskForm.module.css"
+import styles from "./TaskForm.module.css";
 import { useState } from "react";
 import type { Task } from "@/shared/types/task";
-import { useTasks } from "@/features/TaskList/model/TaskContext";
+// import { useTasks } from "@/features/TaskList/model/TaskContext";
 import { useParams } from "react-router-dom";
+import { cardInfo } from "@/const";
+import Button from "@/shared/ui/Button/Button";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import type { RootState } from "@/app/model/store";
 
 const TaskForm = () => {
   const { id } = useParams();
-    const { tasks, updateTask } = useTasks();
+  // const { tasks, updateTask } = useTasks();
+  const tasks = useSelector((state: RootState) => state.tasks.tasks);
+
   const task = tasks.find((task) => task.id === id)!; // ! - значит сто проц что есть этот id.
-  
+
   const [text, setText] = useState<Task>(task);
 
+  // Кнопка сохранения изменений
+  const handleSave = () => {
+    // Потом раскоментить
+    // updateTask(task.id, text);
+    // setEditing(false);
+  };
+
+  const handleCancel = () => {
+    // setEditing(false);
+    setText(task);
+  };
   const handleChange = (
     e:
       | React.ChangeEvent<HTMLInputElement>
@@ -24,7 +42,13 @@ const TaskForm = () => {
     }));
   };
 
-// Форма Редактирования
+  // вынести отдельно позже
+  const navigate = useNavigate();
+  const handleBack = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    navigate(-1);
+  };
+
+  // Форма Редактирования
   return (
     <>
       <div className={styles.card}>
@@ -86,6 +110,4 @@ const TaskForm = () => {
     </>
   );
 };
-};
-
 export default TaskForm;

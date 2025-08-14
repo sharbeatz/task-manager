@@ -1,31 +1,23 @@
 import styles from "./TaskDetails.module.css";
 import { Link, useParams, useNavigate } from "react-router-dom";
-import { useTasks } from "../../../features/TaskList/model/TaskContext";
+
 import { colors } from "../../../const";
 import { useState } from "react";
 import type { Task } from "../../../shared/types/task";
 import { cardInfo } from "../../../const";
 import Button from "@/shared/ui/Button/Button";
+import { useSelector } from "react-redux";
+import type { RootState } from "@/app/model/store";
 
 export const TaskDetails = () => {
   const { id } = useParams();
-  const navigate = useNavigate();
 
+  // вынести скорее всего надо будет отдельно
+  const tasks = useSelector((state: RootState) => state.tasks.tasks);
+  const task = tasks.find((task) => task.id === id)!;
 
   console.log(task);
   const [editing, setEditing] = useState<boolean>(false);
-
-
-  // Кнопка сохранения изменений
-  const handleSave = () => {
-    updateTask(task.id, text);
-    setEditing(false);
-  };
-
-  const handleCancel = () => {
-    setEditing(false);
-    setText(task);
-  };
 
   console.log(tasks.map((item) => item));
 
@@ -35,6 +27,8 @@ export const TaskDetails = () => {
     priority: { backgroundColor: colors.priority[task.priority] },
   };
 
+  // вынести отдельно позже
+  const navigate = useNavigate();
   const handleBack = (event: React.MouseEvent<HTMLAnchorElement>) => {
     navigate(-1);
   };
@@ -67,7 +61,5 @@ export const TaskDetails = () => {
       </>
     );
   }
-
-  
-
+};
 // Что-то придумать с дублирвоанием TaskItem и TaskDetails
