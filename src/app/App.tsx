@@ -1,6 +1,7 @@
+import TaskForm from "@/features/TaskForm/ui/TaskForm";
 import { TaskDetails } from "@/pages";
 
-import { TaskList } from "@/features/TaskList";
+import TasksPage from "@/pages/TasksPage/ui/TasksPage";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
@@ -8,8 +9,9 @@ export function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<TaskList />}></Route>
-        <Route path="/:id" element={<TaskDetails />}></Route>
+        <Route path="/" element={<TasksPage />}></Route>
+        <Route path="/form/:id" element={<TaskForm />}></Route>
+        <Route path=":id" element={<TaskDetails />}></Route>
       </Routes>
     </BrowserRouter>
   );

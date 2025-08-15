@@ -1,10 +1,3 @@
-body {
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    background-color: #FFFFFF;
-
-}
-
-
 .card {
     background-color: #000000;
     max-width: 25%;
@@ -45,8 +38,6 @@ body {
     margin: 0;
 
 }
-
-
 
 .cardDescription {
     color: #FFFFFF;

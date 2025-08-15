@@ -12,7 +12,7 @@ export const TaskItem = ({ task }: TaskItemProps) => {
   const id = task.id!; // id задачи.
   return (
     <div className={styles.card}>
-      <Link to={id}>
+      <Link to={`${id}`}>
         <h2 className={styles.cardTittle}>{task.title}</h2>
       </Link>
       <p className={styles.cardDescription}>{task.description}</p>
