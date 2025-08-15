@@ -1,18 +1,22 @@
-import styles from "./TaskForm.module.css";
+import styles from "./TaskDetails.module.css";
 import { useState } from "react";
 import type { Task } from "@/shared/types/task";
-// import { useTasks } from "@/features/TaskList/model/TaskContext";
 import { useParams } from "react-router-dom";
 import { cardInfo } from "@/const";
 import Button from "@/shared/ui/Button/Button";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import type { RootState } from "@/app/model/store";
+import { addTask } from "@/features/TaskList/model/TasksSlice";
 
-const TaskForm = () => {
+export const TaskForm = () => {
+  type TaskFormProps = {
+    isEditing: boolean;
+  };
   const { id } = useParams();
   // const { tasks, updateTask } = useTasks();
-  const tasks = useSelector((state: RootState) => state.tasks.tasks);
+  const tasks = useSelector((state: RootState) => state.tasks.tasks); // получаем начальные значения задач
+  const dispatch = useDispatch();
 
   const task = tasks.find((task) => task.id === id)!; // ! - значит сто проц что есть этот id.
 
@@ -20,9 +24,7 @@ const TaskForm = () => {
 
   // Кнопка сохранения изменений
   const handleSave = () => {
-    // Потом раскоментить
-    // updateTask(task.id, text);
-    // setEditing(false);
+    dispatch(addTask(text));
   };
 
   const handleCancel = () => {
@@ -110,4 +112,3 @@ const TaskForm = () => {
     </>
   );
 };
-export default TaskForm;

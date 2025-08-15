@@ -9,7 +9,7 @@ import Button from "@/shared/ui/Button/Button";
 import { useSelector } from "react-redux";
 import type { RootState } from "@/app/model/store";
 
-export const TaskDetails = () => {
+export const TaskDetailsPage = () => {
   const { id } = useParams();
 
   // вынести скорее всего надо будет отдельно

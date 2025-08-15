@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { Task } from "@/shared/types/task";
 import { tasksMock } from "@/shared/models/tasksMock";
 
@@ -32,7 +32,9 @@ const TasksSlice = createSlice({
   name: "tasks",
   initialState,
   reducers: {
-    addTask: () => {},
+    addTask: (state, task: PayloadAction<Task>) => {
+      state.tasks.push(task.payload);
+    },
   },
 });
 
