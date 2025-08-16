@@ -7,25 +7,7 @@ type State = {
 };
 
 const initialState: State = {
-  tasks: [
-    {
-      id: "1",
-      title: "Исправить баг с авторизацией",
-      description:
-        "При входе с Safari возникает ошибка 403. Нужно проверить CORS политику.",
-      category: "Баг",
-      status: "В процессе",
-      priority: "Высокий",
-    },
-    {
-      id: "2",
-      title: "Добавить страницу профиля",
-      description: "Сверстать UI профиля пользователя с аватаром и статистикой",
-      category: "Фишка",
-      status: "Сделать",
-      priority: "Средний",
-    },
-  ],
+  tasks: JSON.parse(localStorage.getItem("saveTasks")!),
 };
 
 const TasksSlice = createSlice({
@@ -35,8 +17,15 @@ const TasksSlice = createSlice({
     addTask: (state, task: PayloadAction<Task>) => {
       state.tasks.push(task.payload);
     },
+    updateTask: (state, task: PayloadAction<Task>) => {
+      const id = task.payload.id;
+      state.tasks = state.tasks.map((item) =>
+        item.id === id ? task.payload : item
+      );
+      console.log(state.tasks);
+    },
   },
 });
 
 export const TasksReducer = TasksSlice.reducer;
-export const { addTask } = TasksSlice.actions;
+export const { addTask, updateTask } = TasksSlice.actions;

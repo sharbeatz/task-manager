@@ -4,7 +4,7 @@ export const AddTaskButton = () => {
   return (
     <div>
       <button className={styles.newTask}>
-        <Link to={"./form/1"}>Создать новую задачу</Link>
+        <Link to={"./task/new"}>Создать новую задачу</Link>
       </button>
     </div>
   );

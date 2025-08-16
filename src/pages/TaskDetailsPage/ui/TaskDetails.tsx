@@ -8,6 +8,7 @@ import { cardInfo } from "../../../const";
 import Button from "@/shared/ui/Button/Button";
 import { useSelector } from "react-redux";
 import type { RootState } from "@/app/model/store";
+import { taskRoutes } from "@/app/const";
 
 export const TaskDetailsPage = () => {
   const { id } = useParams();
@@ -15,11 +16,6 @@ export const TaskDetailsPage = () => {
   // вынести скорее всего надо будет отдельно
   const tasks = useSelector((state: RootState) => state.tasks.tasks);
   const task = tasks.find((task) => task.id === id)!;
-
-  console.log(task);
-  const [editing, setEditing] = useState<boolean>(false);
-
-  console.log(tasks.map((item) => item));
 
   const color = {
     category: { backgroundColor: colors.category[task.category] },
@@ -33,7 +29,7 @@ export const TaskDetailsPage = () => {
     navigate(-1);
   };
   // Форма Просмотра
-  if (!editing) {
+  {
     return (
       <>
         <div className={styles.card}>
@@ -51,9 +47,9 @@ export const TaskDetailsPage = () => {
             </p>
             <button
               className={styles.editButton}
-              onClick={() => setEditing(true)}
+              // onClick={() => setEditing(true)}
             >
-              Редактировать
+              <Link to={`${taskRoutes.editForm}/${id}`}>Редактировать</Link>
             </button>
           </div>
         </div>

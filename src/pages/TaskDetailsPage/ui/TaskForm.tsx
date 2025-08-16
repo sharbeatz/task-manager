@@ -7,29 +7,59 @@ import Button from "@/shared/ui/Button/Button";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import type { RootState } from "@/app/model/store";
-import { addTask } from "@/features/TaskList/model/TasksSlice";
+import { addTask, updateTask } from "@/features/TaskList/model/TasksSlice";
 
-export const TaskForm = () => {
-  type TaskFormProps = {
-    isEditing: boolean;
-  };
+type TaskFormProps = {
+  mode: "create" | "edit";
+};
+
+export const TaskForm = (mode: TaskFormProps) => {
   const { id } = useParams();
-  // const { tasks, updateTask } = useTasks();
-  const tasks = useSelector((state: RootState) => state.tasks.tasks); // получаем начальные значения задач
+
   const dispatch = useDispatch();
 
-  const task = tasks.find((task) => task.id === id)!; // ! - значит сто проц что есть этот id.
+  // const task = tasks[0];
 
-  const [text, setText] = useState<Task>(task);
+  const tasks = useSelector((state: RootState) => state.tasks.tasks); // получаем начальные значения задач
+  const generateId = () => (tasks.length + 1).toString(); // функция генерации id. Потом можно вынести отдельно
+  const task = tasks.find((task) => task.id === id)!; // ! - значит сто проц что есть этот id.
+  const initialValueEdit: Task = task;
+  // console.log(initialValueEdit);
+
+  // useState и начальные значения. Потом переписать
+  // const [text, setText] = useState<Task>({
+  //   id: "0",
+  //   title: "",
+  //   category: "Баг",
+  //   status: "В процессе",
+  //   description: "",
+  //   priority: "Высокий",
+  // });
+  const initialValueCreate: Task = {
+    id: generateId(),
+    title: "",
+    category: "Баг",
+    status: "В процессе",
+    description: "",
+    priority: "Высокий",
+  };
+
+  const [text, setText] = useState(
+    mode.mode === "create" ? initialValueCreate : initialValueEdit
+  );
 
   // Кнопка сохранения изменений
   const handleSave = () => {
-    dispatch(addTask(text));
+    if (mode.mode === "create") {
+      dispatch(addTask(text));
+    } else if (mode.mode === "edit") {
+      dispatch(updateTask(text));
+    }
   };
 
   const handleCancel = () => {
     // setEditing(false);
-    setText(task);
+    // setText(task);
   };
   const handleChange = (
     e:
