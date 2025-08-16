@@ -50,3 +50,11 @@ a {
 .editButton {
     background-color: #000000;
 }
+
+.menuBtn {
+    background-color: #4CAF50;
+}
+
+.menuBtn :hover {
+    background-color: aqua;
+}

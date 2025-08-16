@@ -55,11 +55,11 @@ export const TaskForm = (mode: TaskFormProps) => {
     } else if (mode.mode === "edit") {
       dispatch(updateTask(text));
     }
+    navigate("/");
   };
 
   const handleCancel = () => {
-    // setEditing(false);
-    // setText(task);
+    navigate(-1);
   };
   const handleChange = (
     e:
