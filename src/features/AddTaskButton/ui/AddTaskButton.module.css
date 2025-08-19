@@ -1,10 +1,16 @@
 .newTask {
-    padding: 10px;
-    margin: 10px;
+
     border-radius: 5px;
     width: 25%;
     border: 5px;
     font-size: medium;
     font-weight: bold;
     cursor: pointer;
+    text-decoration: none;
+    transition: color 0.9s, transform 0.5s;
+}
+
+.newTask:hover {
+    transform: scale(2.5);
+    color: rgb(182, 194, 207);
 }

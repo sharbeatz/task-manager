@@ -1,60 +1,176 @@
+
+
 .card {
-    background-color: #000000;
+    /* background-color: rgb(0, 64, 101);
     max-width: 25%;
     padding: 10px;
     border-radius: 10px;
-    box-shadow: 2px 2px 50px 2px black;
+    box-shadow: 2px 2px 50px 2px black; */
 
-    margin: 10px;
-    max-height: 150px; /* Ограничиваем высоту */
-    overflow: hidden; /* Скрываем всё, что не помещается */
-    text-align: center;
-    display: flex;
-    flex-direction: column;
+    /* margin: 10px; */
+    /* max-height: 150px; 
+    overflow: hidden;  */
+    
+    overflow: hidden;
+    box-sizing: border-box;
+    width: 550px;
+    background-color: rgb(34, 39, 43);
+    margin-bottom: 25px;
+    border-radius: 20px;
+    padding-bottom: 10px;
+    box-shadow: 10px 10px 100px black;
+    
 }
+
 
 .cardInfo {
+     width: 100%; /* Теперь 100% = ширина .card - 400px */
     display: flex;
-    justify-content: space-between;
-    width: 100%;
-  
+    justify-content: space-around;
+    margin: 0;
 }
+
+
 
 .cardInfo p {
     margin: 0;
-    background-color:white;
+  
     padding: 1.5px;
-    border-radius: 5px;
-    /* box-shadow: 2px 1px 4px 2px white; */
-}
-
-.category {
-    padding: 0;
+    border-radius: 5px; 
+   
 }
 
 .cardTittle {
-    text-align: center;
-    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: start;
     margin: 0;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+    color: rgb(154, 165, 176);
+    font-weight: 350;
+    transition: background 0.9s, transform 0.5s;
+}
+
+.cardTittle:hover {
+    transform: scale(1.05);
+ 
+}
+
+.cardDescription {
+    margin: 0px 0px 20px ;
+    padding-left: 20px;
+    color: rgb(154, 165, 176);
+    font-weight: 100;
+    max-width: 90%;
+   
+}
+
+.deleteTaskButton {
+    cursor: pointer;
+    background: none;
+    border: none;
+    margin-right: 2px;
+    transition: background 0.9s, transform 0.3s;
+}
+
+.editTaskButton {
+    cursor: pointer;
+    text-decoration: none;
+    padding: 5px; 
+    transition: background 0.9s, transform 0.3s;
+}
+
+.deleteTaskButton:hover, .editTaskButton:hover {
+    background: rgb(255, 255, 255);
+    transform: scale(1.05);
+}
+
+
+
+.menu {
+ display: flex;
+ justify-content: space-between;
+ 
+}
+
+.category {
+    /* padding: 0; */
+}
+
+.cardTittle {
+    /* text-align: center;
+    color: #FFFFFF;
+    margin: 0; */
 
 }
 
 .cardDescription {
-    color: #FFFFFF;
+    /* color: #FFFFFF; */
 }
 
 a {
-    text-decoration: none;
+    /* text-decoration: none; */
 }
 
 .editButton {
-    background-color: #000000;
+    /* background-color: #000000; */
 }
 
 .menuBtn {
-    background-color: #4CAF50;
+    /* background-color: #4CAF50; */
 }
 
 .menuBtn :hover {
-    background-color: aqua;
+    /* background-color: aqua; */
 }
+ 
+
+
+
+
+
+.category.Баг {
+    color: red
+}
+.category.Фишка {
+    color: aquamarine;
+}
+
+.category.Документация {
+    color:rgb(211, 209, 209)
+}
+
+.category.Рефактор {
+    color:#37c23c
+}
+
+.category.Тестирование {
+    color:rgb(107, 148, 202)
+}
+
+.status.Сделать {
+    color: gray;
+}
+
+.status.Впроцессе {
+    color: gray;
+}
+
+.status.Сделано {
+    color: green;
+}
+
+.priority.Высокий {
+    color: red
+}
+
+.priority.Средний {
+    color: gray;
+}
+
+.priority.Низкий {
+    color: green;
+}
+

@@ -1,5 +1,4 @@
 import styles from "./TaskItem.module.css";
-// import { useTasks } from "../../features/TaskList/model/TaskContext";
 import type { Task } from "../../shared/types/task";
 import { Link } from "react-router-dom";
 import { colors } from "../../const";
@@ -13,42 +12,40 @@ type TaskItemProps = {
 
 export const TaskItem = ({ task }: TaskItemProps) => {
   const dispatch = useDispatch();
-  const id = task.id!; // id задачи.
+  const id = task.id; // id задачи.
+  const handleDelete = () => {
+    dispatch(deleteTask(id));
+  };
   return (
     <div className={styles.card}>
-      <div className={styles.dropdownMenu}>
-        <button className={styles.menuBtn}>Dropdown</button>
-        <div className={styles.subMenu}>
-          <button
-            className={styles.deleteTask}
-            onClick={() => dispatch(deleteTask(id))}
-          >
-            Удалить
-          </button>
-          <Link to={`${taskRoutes.editForm}/${id}`}>Редактировать</Link>
-        </div>
+      <div className={styles.menu}>
+        <Link
+          className={styles.editTaskButton}
+          to={`${taskRoutes.editForm}/${id}`}
+        >
+          ✏️
+        </Link>
+        <button className={styles.deleteTaskButton} onClick={handleDelete}>
+          🗑️
+        </button>
       </div>
-      <Link to={`${taskRoutes.detailsPage}/${id}`}>
-        <h2 className={styles.cardTittle}>{task.title}</h2>
+
+      <Link
+        to={`${taskRoutes.detailsPage}/${id}`}
+        className={styles.cardTittle}
+      >
+        {task.title}
       </Link>
+
       <p className={styles.cardDescription}>{task.description}</p>
       <div className={styles.cardInfo}>
-        <p
-          className={styles.category}
-          style={{ background: colors.category[task.category] }}
-        >
+        <p className={`${styles.category} ${styles[task.category]}`}>
           {task.category}
         </p>
-        <p
-          className={styles.status}
-          style={{ background: colors.status[task.status] }}
-        >
+        <p className={`${styles.status} ${styles[task.status]}`}>
           {task.status}
         </p>
-        <p
-          className={styles.priority}
-          style={{ background: colors.priority[task.priority] }}
-        >
+        <p className={`${styles.priority} ${styles[task.priority]}`}>
           {task.priority}
         </p>
       </div>

@@ -1,0 +1,8 @@
+body {
+    background-color: #005586;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    font-family: Segoe UI;
+}

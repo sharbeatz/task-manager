@@ -4,8 +4,8 @@ import styles from "./taskPage.module.css";
 
 const TasksPage = () => {
   return (
-    <div>
-      <AddTaskButton />
+    <div className={styles.taskPage}>
+      {/* <AddTaskButton /> */}
       <TaskList />
     </div>
   );

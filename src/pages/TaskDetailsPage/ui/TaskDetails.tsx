@@ -1,10 +1,6 @@
 import styles from "./TaskDetails.module.css";
 import { Link, useParams, useNavigate } from "react-router-dom";
-
 import { colors } from "../../../const";
-import { useState } from "react";
-import type { Task } from "../../../shared/types/task";
-import { cardInfo } from "../../../const";
 import Button from "@/shared/ui/Button/Button";
 import { useSelector } from "react-redux";
 import type { RootState } from "@/app/model/store";

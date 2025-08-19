@@ -84,18 +84,22 @@ export const TaskForm = (mode: TaskFormProps) => {
   return (
     <>
       <div className={styles.card}>
-        <input
-          className={styles.cardTittleEditing}
-          value={text.title}
-          onChange={handleChange}
-          name="title"
-        ></input>
-        <textarea
-          className={styles.cardDescriptionEditing}
-          value={text.description}
-          onChange={handleChange}
-          name="description"
-        ></textarea>
+        <div className={styles.cardEdit}>
+          <p className={styles.titleName}>Заголовок</p>
+          <input
+            className={styles.cardTittleEditing}
+            value={text.title}
+            onChange={handleChange}
+            name="title"
+          ></input>
+          <p className={styles.descriptionName}>Описание</p>
+          <textarea
+            className={styles.cardDescriptionEditing}
+            value={text.description}
+            onChange={handleChange}
+            name="description"
+          ></textarea>
+        </div>
         <div className={styles.cardInfo}>
           <select
             className={styles.categoryEditing}
@@ -129,11 +133,12 @@ export const TaskForm = (mode: TaskFormProps) => {
               <option>{item}</option>
             ))}
           </select>
-
+        </div>
+        <div className={styles.buttons}>
           <button className={styles.cancelButton} onClick={handleCancel}>
             Отменить
           </button>
-          <button className={styles.editButton} onClick={handleSave}>
+          <button className={styles.saveTaskButton} onClick={handleSave}>
             Сохранить
           </button>
         </div>

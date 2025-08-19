@@ -2,7 +2,7 @@ import { TaskForm } from "@/pages/TaskDetailsPage";
 import { TaskDetailsPage } from "@/pages/TaskDetailsPage";
 import TasksPage from "@/pages/TasksPage/ui/TasksPage";
 import { taskRoutes } from "./const";
-
+import "@/app/styles/global.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 export function App() {
