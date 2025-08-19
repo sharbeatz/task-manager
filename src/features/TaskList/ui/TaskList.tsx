@@ -1,5 +1,4 @@
-import type { Task } from "../../../shared/types/task";
-import { TaskItem } from "../../../entities/TaskItem/TaskItem";
+import { TaskItem } from "@/entities/TaskItem/TaskItem";
 import { useSelector } from "react-redux";
 import type { RootState } from "@/app/model/store";
 import { useEffect } from "react";

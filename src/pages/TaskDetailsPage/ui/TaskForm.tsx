@@ -13,7 +13,7 @@ type TaskFormProps = {
   mode: "create" | "edit";
 };
 
-export const TaskForm = (mode: TaskFormProps) => {
+export const TaskForm = ({ mode }: TaskFormProps) => {
   const { id } = useParams();
 
   const dispatch = useDispatch();
@@ -45,14 +45,14 @@ export const TaskForm = (mode: TaskFormProps) => {
   };
 
   const [text, setText] = useState(
-    mode.mode === "create" ? initialValueCreate : initialValueEdit
+    mode === "create" ? initialValueCreate : initialValueEdit
   );
 
   // Кнопка сохранения изменений
   const handleSave = () => {
-    if (mode.mode === "create") {
+    if (mode === "create") {
       dispatch(addTask(text));
-    } else if (mode.mode === "edit") {
+    } else if (mode === "edit") {
       dispatch(updateTask(text));
     }
     navigate("/");
