@@ -1,3 +1,5 @@
-// export const generateId = () => {
-//   return Math.random().toString();
-// };
+export const generateId = (): string => {
+  return crypto.randomUUID();
+};
+
+export const getDate = () => {};

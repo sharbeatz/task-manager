@@ -5,6 +5,7 @@ import { colors } from "../../const";
 import { taskRoutes } from "@/app/const";
 import { useDispatch } from "react-redux";
 import { deleteTask } from "@/features/TaskList/model/TasksSlice";
+import { formatDate } from "./model/utils";
 
 type TaskItemProps = {
   task: Task;
@@ -30,12 +31,7 @@ export const TaskItem = ({ task }: TaskItemProps) => {
         </button>
       </div>
 
-      <Link
-        to={`${taskRoutes.detailsPage}/${id}`}
-        className={styles.cardTittle}
-      >
-        {task.title}
-      </Link>
+      <h1 className={styles.cardTittle}>{task.title}</h1>
 
       <p className={styles.cardDescription}>{task.description}</p>
       <div className={styles.cardInfo}>
@@ -48,6 +44,9 @@ export const TaskItem = ({ task }: TaskItemProps) => {
         <p className={`${styles.priority} ${styles[task.priority]}`}>
           {task.priority}
         </p>
+      </div>
+      <div className={styles.createdAt}>
+        <small>Создана {formatDate(task.created_at)}</small>
       </div>
     </div>
   );

@@ -29,4 +29,5 @@ export interface Task {
   category: TaskCategory;
   status: TaskStatus;
   priority: TaskPriority;
+  created_at: string;
 }

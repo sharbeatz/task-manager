@@ -8,33 +8,18 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import type { RootState } from "@/app/model/store";
 import { addTask, updateTask } from "@/features/TaskList/model/TasksSlice";
-
+import { generateId } from "../model/utils";
 type TaskFormProps = {
   mode: "create" | "edit";
 };
 
 export const TaskForm = ({ mode }: TaskFormProps) => {
   const { id } = useParams();
-
   const dispatch = useDispatch();
-
-  // const task = tasks[0];
-
   const tasks = useSelector((state: RootState) => state.tasks.tasks); // получаем начальные значения задач
-  const generateId = () => (tasks.length + 1).toString(); // функция генерации id. Потом можно вынести отдельно
+  // const generateId = () => (tasks.length + 1).toString(); // функция генерации id. Потом можно вынести отдельно
   const task = tasks.find((task) => task.id === id)!; // ! - значит сто проц что есть этот id.
   const initialValueEdit: Task = task;
-  // console.log(initialValueEdit);
-
-  // useState и начальные значения. Потом переписать
-  // const [text, setText] = useState<Task>({
-  //   id: "0",
-  //   title: "",
-  //   category: "Баг",
-  //   status: "В процессе",
-  //   description: "",
-  //   priority: "Высокий",
-  // });
   const initialValueCreate: Task = {
     id: generateId(),
     title: "",
@@ -42,6 +27,7 @@ export const TaskForm = ({ mode }: TaskFormProps) => {
     status: "В процессе",
     description: "",
     priority: "Высокий",
+    created_at: new Date().toISOString(),
   };
 
   const [text, setText] = useState(
@@ -49,7 +35,9 @@ export const TaskForm = ({ mode }: TaskFormProps) => {
   );
 
   // Кнопка сохранения изменений
-  const handleSave = () => {
+  const handleSave = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log(text.description);
     if (mode === "create") {
       dispatch(addTask(text));
     } else if (mode === "edit") {
@@ -83,66 +71,69 @@ export const TaskForm = ({ mode }: TaskFormProps) => {
   // Форма Редактирования
   return (
     <>
-      <div className={styles.card}>
-        <div className={styles.cardEdit}>
-          <p className={styles.titleName}>Заголовок</p>
-          <input
-            className={styles.cardTittleEditing}
-            value={text.title}
-            onChange={handleChange}
-            name="title"
-          ></input>
-          <p className={styles.descriptionName}>Описание</p>
-          <textarea
-            className={styles.cardDescriptionEditing}
-            value={text.description}
-            onChange={handleChange}
-            name="description"
-          ></textarea>
-        </div>
-        <div className={styles.cardInfo}>
-          <select
-            className={styles.categoryEditing}
-            onChange={handleChange}
-            name="category"
-            value={text.category}
-          >
-            {cardInfo.category.map((item) => (
-              <option>{item}</option>
-            ))}
-          </select>
+      <form action="" onSubmit={handleSave}>
+        <div className={styles.card}>
+          <div className={styles.cardEdit}>
+            <p className={styles.titleName}>Заголовок</p>
+            <input
+              className={styles.cardTittleEditing}
+              value={text.title}
+              onChange={handleChange}
+              name="title"
+            ></input>
+            <p className={styles.descriptionName}>Описание</p>
+            <textarea
+              wrap="hard"
+              className={styles.cardDescriptionEditing}
+              value={text.description}
+              onChange={handleChange}
+              name="description"
+            ></textarea>
+          </div>
+          <div className={styles.cardInfo}>
+            <select
+              className={styles.categoryEditing}
+              onChange={handleChange}
+              name="category"
+              value={text.category}
+            >
+              {cardInfo.category.map((item) => (
+                <option>{item}</option>
+              ))}
+            </select>
 
-          <select
-            className={styles.statusEditing}
-            onChange={handleChange}
-            name="status"
-            value={text.status}
-          >
-            {cardInfo.status.map((item) => (
-              <option>{item}</option>
-            ))}
-          </select>
+            <select
+              className={styles.statusEditing}
+              onChange={handleChange}
+              name="status"
+              value={text.status}
+            >
+              {cardInfo.status.map((item) => (
+                <option>{item}</option>
+              ))}
+            </select>
 
-          <select
-            className={styles.priorityEditing}
-            onChange={handleChange}
-            name="priority"
-            value={text.priority}
-          >
-            {cardInfo.priority.map((item) => (
-              <option>{item}</option>
-            ))}
-          </select>
+            <select
+              className={styles.priorityEditing}
+              onChange={handleChange}
+              name="priority"
+              value={text.priority}
+            >
+              {cardInfo.priority.map((item) => (
+                <option>{item}</option>
+              ))}
+            </select>
+          </div>
+          <div className={styles.buttons}>
+            <button className={styles.cancelButton} onClick={handleCancel}>
+              Отменить
+            </button>
+            <button type="submit" className={styles.saveTaskButton}>
+              Сохранить
+            </button>
+          </div>
         </div>
-        <div className={styles.buttons}>
-          <button className={styles.cancelButton} onClick={handleCancel}>
-            Отменить
-          </button>
-          <button className={styles.saveTaskButton} onClick={handleSave}>
-            Сохранить
-          </button>
-        </div>
-      </div>
+      </form>
       <Button onClick={handleBack}>Назад</Button>
     </>
   );
